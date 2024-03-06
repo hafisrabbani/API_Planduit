@@ -16,11 +16,12 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'calculator'], function () {
         Route::post('investment', [FinancialCalculatorController::class, 'storeInvestment']);
         Route::post('budgeting-503020', [FinancialCalculatorController::class, 'storeBudgeting503020']);
-        Route::post('zakat-penghasilan', [FinancialCalculatorController::class, 'storeZakatPenghasilan']);
         Route::get('profile-resiko', [FinancialCalculatorController::class, 'getQuestionProfileResiko']);
         Route::post('profile-resiko', [FinancialCalculatorController::class, 'storeProfileResiko']);
+        Route::post('zakat-penghasilan', [FinancialCalculatorController::class, 'storeZakatPenghasilan']);
         Route::post('zakat-emas', [FinancialCalculatorController::class, 'storeZakatEmas']);
         Route::post('zakat-tabungan', [FinancialCalculatorController::class, 'storeZakatTabungan']);
+        Route::post('zakat-pertanian', [FinancialCalculatorController::class, 'storeZakatPertanian']);
     });
 
     Route::group(['prefix' => 'info'], function () {

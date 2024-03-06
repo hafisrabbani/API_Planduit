@@ -6,16 +6,32 @@ use App\DTO\ZakatPenghasilanDTO;
 use App\Services\Hook\HookGoldAPI\HookGoldAPIService;
 use LaravelEasyRepository\Service;
 
+/**
+ *
+ */
 class ZakatPenghasilanServiceImplement extends Service implements ZakatPenghasilanService{
+    /**
+     * @var ZakatPenghasilanDTO
+     */
     private ZakatPenghasilanDTO $zakatPenghasilanDTO;
+    /**
+     * @var array
+     */
     public $results = [];
 
-    public function setData(ZakatPenghasilanDTO $data) : self
+    /**
+     * @param ZakatPenghasilanDTO $zakatPenghasilanDTO
+     * @return $this
+     */
+    public function setData(ZakatPenghasilanDTO $zakatPenghasilanDTO) : self
     {
-        $this->zakatPenghasilanDTO = $data;
+        $this->zakatPenghasilanDTO = $zakatPenghasilanDTO;
         return $this;
     }
 
+    /**
+     * @return self
+     */
     private function calculateZakatPenghasilan(): self
     {
         $income = $this->zakatPenghasilanDTO->income;
@@ -40,6 +56,9 @@ class ZakatPenghasilanServiceImplement extends Service implements ZakatPenghasil
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getResults(): array
     {
         $this->calculateZakatPenghasilan();
