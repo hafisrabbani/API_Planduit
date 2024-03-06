@@ -1,0 +1,156 @@
+[
+    {
+        "number": 1,
+        "question": "Berapa lama kamu mau menginvestasikan uangmu?",
+        "choices": [
+            {
+                "label": "Kurang dari 1 tahun",
+                "value": 0
+            },
+            {
+                "label": "1-3 tahun",
+                "value": 1
+            },
+            {
+                "label": "3-5 tahun",
+                "value": 2
+            },
+            {
+                "label": "Lebih dari 5 tahun",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 2,
+        "question": "Berapa besar Dana Darurat (Emergency Fund) yang sudah kamu miliki sampai saat ini?",
+        "choices": [
+            {
+                "label": "Lebih dari 6 bulan gaji",
+                "value": 0
+            },
+            {
+                "label": "3-6 bulan gaji",
+                "value": 1
+            },
+            {
+                "label": "1-3 bulan gaji",
+                "value": 2
+            },
+            {
+                "label": "Kurang dari 1 bulan gaji",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 3,
+        "question": "Seberapa tinggi toleransi risiko yang bisa kamu tanggung saat investasi?",
+        "choices": [
+            {
+                "label": "Tidak ambil risiko atas uang dan modal pokoknya",
+                "value": 0
+            },
+            {
+                "label": "Sedikit ambil risiko, tapi tetap melindungi nilai uang dari penurunan",
+                "value": 1
+            },
+            {
+                "label": "Berani ambil risiko, karena ingin investasi jangka panjang untuk dapat hasil yang lebih tinggi",
+                "value": 2
+            },
+            {
+                "label": "Gw berani ambil resiko dengan investasi jangka panjang saya buat dapet hasil yang tinggi",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 4,
+        "question": "Pilih salah satu skenario investasi yang kamu banget!",
+        "choices": [
+            {
+                "label": "Nilai maksimal keuntungan 33% dan kerugian 12%",
+                "value": 0
+            },
+            {
+                "label": "Nilai maksimal keuntungan 42% dan kerugian 15%",
+                "value": 1
+            },
+            {
+                "label": "Nilai maksimal keuntungan 60% dan kerugian 30%",
+                "value": 2
+            },
+            {
+                "label": "Nilai maksimal keuntungan 80% dan kerugian 50%",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 5,
+        "question": "Apa saja portofolio investasi yang kamu miliki sampai saat ini?",
+        "choices": [
+            {
+                "label": "Kas atau setara kas (tabungan dan deposito berjangka)",
+                "value": 0
+            },
+            {
+                "label": "Kebanyakan di kas, beberapa investasi (property selain rumah tinggal, saham unggulan)",
+                "value": 1
+            },
+            {
+                "label": "Beberapa investasi, sebagian besar tidak di kas ( saham, obligasi, reksadana, property selain rumah tinggal)",
+                "value": 2
+            },
+            {
+                "label": "Campuran investasi termasuk yang spekulasi( opsi, reksadana beresiko tinggi, valuta asing, saham perusahaan kecil)",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 6,
+        "question": "Berapa besar total investasi reksadana mu saat ini?",
+        "choices": [
+            {
+                "label": "0-10%",
+                "value": 0
+            },
+            {
+                "label": "11-15%",
+                "value": 1
+            },
+            {
+                "label": "26-40%",
+                "value": 2
+            },
+            {
+                "label": "Lebih dari 40%",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 7,
+        "question": "Apabila salah satu investasi mu mengalami kerugian sebesar 25% dari pokok, hal apa yang akan kamu lakukan?",
+        "choices": [
+            {
+                "label": "Jual secepatnya untuk mencegah kerugian lebih jauh “cut loss”",
+                "value": 0
+            },
+            {
+                "label": "Tahan dulu dan jual kalau harganya sudah naik lagi agar kembali “break even”",
+                "value": 1
+            },
+            {
+                "label": "Bertahan dengan investasi ini untuk jangka panjang",
+                "value": 2
+            },
+            {
+                "label": "Beli lebih banyak lagi, ini kesempatan untuk mendapatkan saham dengan harga lebih murah",
+                "value": 3
+            }
+        ]
+    }
+]
