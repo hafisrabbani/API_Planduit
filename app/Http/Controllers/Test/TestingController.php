@@ -120,4 +120,7 @@ class TestingController extends Controller
         }
     }
 
+    public function templateTest(){
+        return view('Admin.Pages.test.index');
+    }
 }
