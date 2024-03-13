@@ -2,13 +2,17 @@
 
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
-if(!function_exists('activeState')){
+if (!function_exists('activeState')) {
     function activeState($route, $output = "active")
     {
-        if(str_starts_with(Route::currentRouteName(), $route)){
+        $fixedRoute = strtok($route, '{');
+        if (Str::startsWith(url()->current(), url($fixedRoute))) {
             return $output;
         }
         return '';
     }
 }
+
+

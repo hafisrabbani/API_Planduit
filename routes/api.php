@@ -27,5 +27,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'info'], function () {
         Route::get('gold-price', [InformationController::class, 'infoGoldPrice']);
         Route::get('grain-price', [InformationController::class, 'infoGrainPrice']);
+        Route::get('product', [InformationController::class, 'getAllProduct']);
+        Route::get('product/{key}', [InformationController::class, 'infoProductDetail']);
     });
 });
