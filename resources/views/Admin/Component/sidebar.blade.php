@@ -51,16 +51,13 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-
-{{--                <li--}}
-{{--                    class="sidebar-item  {{ activeState('test.index', 'active') }}">--}}
-{{--                    <a href="{{ route('test.index') }}" class='sidebar-link'>--}}
-{{--                        <i class="bi bi-grid-fill"></i>--}}
-{{--                        <span>Test</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-
-
+                <li
+                    class="sidebar-item {{ activeState(route('admin.v1.info-product.index'), 'active') }}">
+                    <a href="{{ route('admin.v1.info-product.index') }}" class='sidebar-link'>
+                        <i class="bi bi-cart-fill"></i>
+                        <span>Info Product</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
