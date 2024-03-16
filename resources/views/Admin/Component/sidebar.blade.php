@@ -45,8 +45,8 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
                 <li
-                    class="sidebar-item  {{ activeState('test.template', 'active') }}">
-                    <a href="" class='sidebar-link'>
+                    class="sidebar-item  {{ activeState(route('admin.v1.dashboard'), 'active') }}">
+                    <a href="{{ route('admin.v1.dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -56,6 +56,12 @@
                     <a href="{{ route('admin.v1.info-product.index') }}" class='sidebar-link'>
                         <i class="bi bi-cart-fill"></i>
                         <span>Info Product</span>
+                    </a>
+                </li><li
+                    class="sidebar-item {{ activeState(route('admin.v1.blog-category.index'), 'active') }}">
+                    <a href="{{ route('admin.v1.blog-category.index') }}" class='sidebar-link'>
+                        <i class="bi bi-journal-text"></i>
+                        <span>Blog Category</span>
                     </a>
                 </li>
             </ul>

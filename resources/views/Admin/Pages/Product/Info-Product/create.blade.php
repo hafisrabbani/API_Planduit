@@ -6,6 +6,9 @@
 
 @section('title', 'Create Info Product')
 @section('subtitle', 'Create Info Product')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}">
+@endpush
 
 @section('content')
     <section class="section">

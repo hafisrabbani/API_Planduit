@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Info;
 
 use App\Http\Controllers\Controller;
-use Faker\Core\File;
 use Illuminate\Http\Request;
 
 use App\Services\Hook\HookGrainAPI\HookGrainAPIService;

@@ -6,7 +6,9 @@
 
 @section('title', 'Update Info Product')
 @section('subtitle', 'Update Info Product')
-
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}">
+@endpush
 @section('content')
     <section class="section">
         <div class="card">
@@ -17,6 +19,7 @@
                 <form action="{{ route('admin.v1.info-product.update', $infoProduct->id) }}" method="POST"
                       enctype="multipart/form-data" id="info-product-form">
                     @csrf
+                    @method('PATCH')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -53,6 +56,7 @@
     <script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>>
     <script>
         $(document).ready(function () {
+            alert('test');
             $('#info-product-form').submit(function (e) {
                 e.preventDefault();
                 let form = $(this);
@@ -60,7 +64,7 @@
                 let data = new FormData(form[0]);
                 $.ajax({
                     url: url,
-                    type: 'PATCH',
+                    method: 'POST',
                     data: data,
                     contentType: false,
                     processData: false,
