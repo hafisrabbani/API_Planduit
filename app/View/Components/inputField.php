@@ -24,7 +24,11 @@ class inputField extends Component
         $this->type = $type;
         $this->placeholder = $placeholder;
         $this->value = $value;
-        $this->id = $id;
+        if ($id == '') {
+            $this->id = $name;
+        } else {
+            $this->id = $id;
+        }
     }
 
     /**
