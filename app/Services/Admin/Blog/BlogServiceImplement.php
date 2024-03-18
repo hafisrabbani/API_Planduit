@@ -22,9 +22,9 @@ class BlogServiceImplement extends Service implements BlogService{
     }
 
     // Define your custom methods :)
-    public function getAll($columns = ['*'])
+    public function getAll($columns = ['*'],$status = null)
     {
-        return $this->mainRepository->getAll($columns);
+        return $this->mainRepository->getAll($columns,$status);
     }
 
     public function getById($id, $columns = ['*'])
@@ -71,5 +71,10 @@ class BlogServiceImplement extends Service implements BlogService{
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
+    }
+
+    public function getBySlug(string $slug)
+    {
+        return $this->mainRepository->getBySlug($slug);
     }
 }

@@ -20,10 +20,12 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
         $this->model = $model;
     }
 
-    public function getAll($columns = ['*'])
+    public function getAll($columns = ['*'],$status = null)
     {
         try{
-            return $this->model->with('blogCategory')->get($columns);
+            return $this->model->with('category')->when($status, function($query) use ($status){
+                return $query->where('status', $status);
+            })->get($columns);
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
@@ -32,7 +34,7 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
     public function getById($id, $columns = ['*'])
     {
         try{
-            return $this->model->with('blogCategory')->find($id, $columns);
+            return $this->model->with('category')->find($id, $columns);
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
@@ -41,13 +43,14 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
     public function createBlog(BlogDTO $blogDTO)
     {
         try{
-            $this->model->create([
-                'title' => $blogDTO->title,
-                'description' => $blogDTO->description,
-                'slug' => $blogDTO->slug,
-                'blog_category_id' => $blogDTO->blog_category_id,
-                'thumbnail' => $blogDTO->thumbnail,
-            ]);
+            $blog = new Blog();
+            $blog->title = $blogDTO->title;
+            $blog->description = $blogDTO->description;
+            $blog->slug = $blogDTO->slug;
+            $blog->blog_category_id = $blogDTO->blog_category_id;
+            $blog->thumbnail = $blogDTO->thumbnail;
+            $blog->status = $blogDTO->status;
+            $blog->save();
             return true;
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
@@ -58,13 +61,13 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
     {
         try{
             $blog = $this->model->find($id);
-            $blog->update([
-                'title' => $blogDTO->title,
-                'description' => $blogDTO->description,
-                'slug' => $blogDTO->slug,
-                'blog_category_id' => $blogDTO->blog_category_id,
-                'thumbnail' => $blogDTO->thumbnail,
-            ]);
+            $blog->title = $blogDTO->title;
+            $blog->description = $blogDTO->description;
+            $blog->slug = $blogDTO->slug;
+            $blog->blog_category_id = $blogDTO->blog_category_id;
+            $blog->thumbnail = $blogDTO->thumbnail;
+            $blog->status = $blogDTO->status;
+            $blog->save();
             return true;
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
@@ -84,7 +87,7 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
     public function getBlogByCategoryId($id)
     {
         try{
-            return $this->model->where('blog_category_id', $id)->get();
+            return $this->model->where('blog_category_id', $id)->where('status', 'published')->get();
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
@@ -93,7 +96,7 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
     public function findRelatedBlog($id, $limit = 5)
     {
         try{
-            return $this->model->where('blog_category_id', $id)->where('id', '!=', $id)->limit($limit)->get();
+            return $this->model->where('blog_category_id', $id)->where('id', '!=', $id)->limit($limit)->where('status', 'published')->get();
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
@@ -102,7 +105,7 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
     public function getBySlug(string $slug)
     {
         try{
-            return $this->model->where('slug', $slug)->first();
+            return $this->model->where('slug', $slug)->where('status', 'published')->first();
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }

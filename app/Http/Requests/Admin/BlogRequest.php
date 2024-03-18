@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class BlogRequest extends FormRequest
 {
-    public mixed $title;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +26,8 @@ class BlogRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'required|string',
             'blog_category_id' => 'required|integer|exists:blog_categories,id',
-            'thumbnail' => 'required|image',
+            'thumbnail' => 'image',
+            'status' => 'required|in:draft,published'
         ];
     }
 }

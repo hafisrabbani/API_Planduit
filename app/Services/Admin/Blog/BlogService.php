@@ -6,7 +6,7 @@ use App\DTO\Admin\BlogDTO;
 use LaravelEasyRepository\BaseService;
 
 interface BlogService extends BaseService{
-    public function getAll($columns = ['*']);
+    public function getAll($columns = ['*'],$status = null);
     public function getById($id, $columns = ['*']);
     public function createBlog(BlogDTO $blogDTO);
     public function updateBlog($id, BlogDTO $blogDTO);
@@ -14,4 +14,5 @@ interface BlogService extends BaseService{
     public function getBlogByCategoryId($id);
     public function findRelatedBlog($id, $limit);
     public function generateSlug($title, $id = null);
+    public function getBySlug(string $slug);
 }

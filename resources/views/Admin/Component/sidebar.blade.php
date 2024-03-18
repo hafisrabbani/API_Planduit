@@ -64,6 +64,13 @@
                         <span>Blog Category</span>
                     </a>
                 </li>
+                <li
+                    class="sidebar-item {{ activeState(route('admin.v1.blog.index'), 'active') }}">
+                    <a href="{{ route('admin.v1.blog.index') }}" class='sidebar-link'>
+                        <i class="bi bi-book"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
