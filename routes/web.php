@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin/panel/v1/planduit', 'as' => 'admin.v1.', 'middl
     Route::resource('info-product', InfoProductController::class);
     Route::resource('blog', BlogController::class);
     Route::resource('blog-category', BlogCategoryController::class);
+    Route::post('ckeditor-upload', [BlogController::class, 'ckeditorUpload'])->name('ckeditor.upload');
 });
 
 Route::prefix('test')->group(function () {

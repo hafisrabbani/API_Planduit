@@ -4,7 +4,7 @@ use App\Http\Controllers\Info\InformationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Test\TestingController;
 use App\Http\Controllers\Calculator\FinancialCalculatorController;
-
+use App\Http\Controllers\API\BlogController;
 
 Route::group(['prefix' => 'test'], function () {
     Route::get('gold-price', [TestingController::class, 'index']);
@@ -29,5 +29,10 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('grain-price', [InformationController::class, 'infoGrainPrice']);
         Route::get('product', [InformationController::class, 'getAllProduct']);
         Route::get('product/{key}', [InformationController::class, 'infoProductDetail']);
+    });
+
+    Route::group(['prefix' => 'blog'], function () {
+        Route::get('all', [BlogController::class, 'getAll']);
+        Route::get('detail/{id}', [BlogController::class, 'getDetail']);
     });
 });
