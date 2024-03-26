@@ -7,6 +7,7 @@ use App\DTO\InvestmentDTO;
 use App\DTO\ProfileResikoDTO;
 use App\DTO\ZakatEmasDTO;
 use App\DTO\ZakatPenghasilanDTO;
+use App\DTO\ZakatPerdaganganDTO;
 use App\DTO\ZakatPertanianDTO;
 use App\DTO\ZakatTabunganDTO;
 use App\Http\Controllers\Controller;
@@ -16,12 +17,14 @@ use App\Http\Requests\Calculator\ProfileResikoRequest;
 use App\Http\Requests\Calculator\ZakatTabunganRequest;
 use App\Http\Requests\Zakat\ZakatEmasRequest;
 use App\Http\Requests\Zakat\ZakatPenghasilanRequest;
+use App\Http\Requests\Zakat\ZakatPerdaganganRequest;
 use App\Http\Requests\Zakat\ZakatPertanianRequest;
 use App\Services\Calculator\Budgeting503020\Budgeting503020Service;
 use App\Services\Calculator\InvestmentCalculator\InvestmentCalculatorService;
 use App\Services\Calculator\ProfileResiko\ProfileResikoService;
 use App\Services\Calculator\Zakat\ZakatEmas\ZakatEmasService;
 use App\Services\Calculator\Zakat\ZakatPenghasilan\ZakatPenghasilanService;
+use App\Services\Calculator\Zakat\ZakatPerdagangan\ZakatPerdaganganService;
 use App\Services\Calculator\Zakat\ZakatPertanian\ZakatPertanianService;
 use App\Services\Calculator\Zakat\ZakatTabungan\ZakatTabunganService;
 use App\Services\Hook\HookGoldAPI\HookGoldAPIService;
@@ -70,6 +73,10 @@ class FinancialCalculatorController extends Controller
     private $hookGrainAPIService;
 
     /**
+     * @var ZakatPerdaganganService
+     */
+    private $zakatPerdaganganService;
+    /**
      * @param InvestmentCalculatorService $investmentCalculatorService
      * @param Budgeting503020Service $budgeting503020Service
      * @param ZakatPenghasilanService $zakatPenghasilanService
@@ -79,6 +86,7 @@ class FinancialCalculatorController extends Controller
      * @param ZakatTabunganService $zakatTabunganService
      * @param ZakatPertanianService $zakatPertanianService
      * @param HookGrainAPIService $hookGrainAPIService
+     * @param ZakatPerdaganganService $zakatPerdaganganService
      *
      */
     public function __construct(
@@ -90,7 +98,8 @@ class FinancialCalculatorController extends Controller
         ZakatEmasService            $zakatEmasService,
         ZakatTabunganService        $zakatTabunganService,
         ZakatPertanianService       $zakatPertanianService,
-        HookGrainAPIService         $hookGrainAPIService
+        HookGrainAPIService         $hookGrainAPIService,
+        ZakatPerdaganganService     $zakatPerdaganganService
     )
     {
         $this->investmentCalculatorService = $investmentCalculatorService;
@@ -102,6 +111,7 @@ class FinancialCalculatorController extends Controller
         $this->zakatTabunganService = $zakatTabunganService;
         $this->zakatPertanianService = $zakatPertanianService;
         $this->hookGrainAPIService = $hookGrainAPIService;
+        $this->zakatPerdaganganService = $zakatPerdaganganService;
     }
 
     /**
@@ -283,6 +293,30 @@ class FinancialCalculatorController extends Controller
                 $grainPrice
             );
             $result = $this->zakatPertanianService->setData($zakatPertanianDTO)->getResults();
+            return response()->json([
+                'message' => 'Success',
+                'data' => $result
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function storeZakatPerdagangan(ZakatPerdaganganRequest $request): \Illuminate\Http\JsonResponse
+    {
+        try {
+            $data = $request->all();
+            $goldPrice = $this->hookGoldAPIService->getGoldPrice();
+            $zakatPerdaganganDTO = new ZakatPerdaganganDTO(
+                $data['rotated_capital'],
+                $data['current_recievable'],
+                $data['profit'],
+                $data['current_payable'],
+                $data['loss']
+            );
+            $result = $this->zakatPerdaganganService->setData($zakatPerdaganganDTO, $goldPrice)->getResults();
             return response()->json([
                 'message' => 'Success',
                 'data' => $result
