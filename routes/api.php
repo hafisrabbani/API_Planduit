@@ -22,6 +22,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('zakat-emas', [FinancialCalculatorController::class, 'storeZakatEmas']);
         Route::post('zakat-tabungan', [FinancialCalculatorController::class, 'storeZakatTabungan']);
         Route::post('zakat-pertanian', [FinancialCalculatorController::class, 'storeZakatPertanian']);
+        Route::post('zakat-perdagangan', [FinancialCalculatorController::class, 'storeZakatPerdagangan']);
     });
 
     Route::group(['prefix' => 'info'], function () {
