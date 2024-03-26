@@ -20,6 +20,8 @@ class BlogController extends Controller
     public function getAll()
     {
         try {
+            $search = request()->get('search') ?? null;
+            $limit = request()->get('limit') ?? 10;
             $blogs = $this->blogService->getAll(columns:[
                 'id',
                 'title',
@@ -28,7 +30,7 @@ class BlogController extends Controller
                 'blog_category_id',
                 'slug',
                 'created_at'
-            ],status: 'published');
+            ],status: 'published', limit: $limit,search: $search);
             collect($blogs)->map(function ($blog) {
                 $blog->thumbnail = $this->fileHandlerService->getFile($blog->thumbnail);
                 $blog->short_description = substr(strip_tags($blog->description), 0, 100);
