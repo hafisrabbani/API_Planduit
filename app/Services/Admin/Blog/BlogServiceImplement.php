@@ -21,10 +21,9 @@ class BlogServiceImplement extends Service implements BlogService{
       $this->mainRepository = $mainRepository;
     }
 
-    // Define your custom methods :)
-    public function getAll($columns = ['*'],$status = null)
+    public function getAll($columns = ['*'], $status = null, $limit = null, $orderBy = 'created_at', $sortBy = 'desc', $search = null)
     {
-        return $this->mainRepository->getAll($columns,$status);
+        return $this->mainRepository->getAll($columns, $status, $limit, $orderBy, $sortBy, $search);
     }
 
     public function getById($id, $columns = ['*'])

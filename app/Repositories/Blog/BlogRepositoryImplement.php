@@ -8,11 +8,6 @@ use App\Models\Blog;
 
 class BlogRepositoryImplement extends Eloquent implements BlogRepository{
 
-    /**
-    * Model class to be used in this repository for the common methods inside Eloquent
-    * Don't remove or change $this->model variable name
-    * @property Model|mixed $model;
-    */
     protected $model;
 
     public function __construct(Blog $model)
@@ -20,12 +15,14 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository{
         $this->model = $model;
     }
 
-    public function getAll($columns = ['*'],$status = null)
+    public function getAll($columns = ['*'], $status = null, $limit = null, $orderBy = 'created_at', $sortBy = 'desc', $search = null)
     {
         try{
             return $this->model->with('category')->when($status, function($query) use ($status){
                 return $query->where('status', $status);
-            })->get($columns);
+            })->when($search, function($query) use ($search){
+                return $query->where('title', 'like', '%'.$search.'%');
+            })->orderBy($orderBy, $sortBy)->limit($limit)->get($columns);
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
