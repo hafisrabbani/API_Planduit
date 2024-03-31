@@ -7,8 +7,7 @@ use LaravelEasyRepository\Service;
 use Illuminate\Support\Facades\Cache;
 class HookGoldAPIServiceImplement extends Service implements HookGoldAPIService
 {
-    const API_URL = 'https://logam-mulia-api.vercel.app/prices/hargaemas-org';
-
+    const API_URL = 'https://www.indogold.id/ajax/chart_interval/GOLD/1';
     public function getGoldPrice(): int
     {
         try {
@@ -20,8 +19,9 @@ class HookGoldAPIServiceImplement extends Service implements HookGoldAPIService
             $client = new Client();
             $response = $client->get(self::API_URL);
             $response = json_decode($response->getBody(), true);
-            Cache::put($cacheKey, $response['data'][0]['buy'], $cacheTime);
-            return $response['data'][0]['buy'];
+            $results = $response[0]['data'][0][1];
+            Cache::put($cacheKey, $results, $cacheTime);
+            return $results;
         }catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
