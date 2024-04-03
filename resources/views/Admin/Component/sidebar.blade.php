@@ -71,6 +71,13 @@
                         <span>Blog</span>
                     </a>
                 </li>
+                <li
+                    class="sidebar-item {{ activeState(route('admin.v1.rating'), 'active') }}">
+                    <a href="{{ route('admin.v1.rating') }}" class='sidebar-link'>
+                        <i class="bi bi-star-fill"></i>
+                        <span>Ratings</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
