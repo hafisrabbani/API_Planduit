@@ -19,6 +19,6 @@ class dashboardController extends Controller
     {
         $dataRatings = $this->ratingService->getStatistikRating();
         $dataRatings = json_encode($dataRatings);
-        return view('Admin.Pages.Dashboard.Index', compact('dataRatings'));
+        return view('Admin.Pages.Dashboard.index', compact('dataRatings'));
     }
 }
