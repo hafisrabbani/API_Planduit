@@ -86,7 +86,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td><i class="bi bi-star-fill text-warning"></i> {{ $item->rating }}
                                 </td>
-                                <td>{{ $item->comment }}</td>
+                                <td>{{ ($item->comment) ? $item->comment : '-' }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                             </tr>
                         @endforeach

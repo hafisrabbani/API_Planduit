@@ -23,7 +23,7 @@ class RatingController extends Controller
             $request->validated();
             $data = new RatingDTO(
                 $request->rating,
-                $request->comment,
+                $request->comment == null ? '' : $request->comment
             );
             $this->ratingService->postRating($data);
 

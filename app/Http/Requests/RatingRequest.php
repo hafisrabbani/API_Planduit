@@ -23,7 +23,7 @@ class RatingRequest extends FormRequest
     {
         return [
             'rating' => ['required', 'integer', 'min:1', 'max:5'],
-            'comment' => ['required', 'string', 'max:255'],
+            'comment' => ['max:255'],
         ];
     }
 }
