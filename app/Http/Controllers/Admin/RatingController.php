@@ -18,6 +18,6 @@ class RatingController extends Controller
     {
         $data = $this->ratingService->getAllRating();
         $statistik = $this->ratingService->getStatistikRating();
-        return view('Admin.Pages.Rating.Index', compact('data', 'statistik'));
+        return view('Admin.Pages.Rating.index', compact('data', 'statistik'));
     }
 }
