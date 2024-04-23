@@ -30,7 +30,7 @@ class BlogController extends Controller
             $blogs = $this->blogService->getAll();
             return view('Admin.Pages.Blog.index', compact('blogs'));
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
@@ -63,7 +63,7 @@ class BlogController extends Controller
             $this->blogService->createBlog($blogDTO);
             return response()->json(['message' => 'Blog created successfully'], 201);
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
@@ -78,7 +78,7 @@ class BlogController extends Controller
             $blog->thumbnail = $this->fileHandlerService->getFile($blog->thumbnail);
             return view('Admin.Pages.Blog.update', compact('blog', 'blogCategories'));
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
@@ -106,7 +106,7 @@ class BlogController extends Controller
             $this->blogService->updateBlog($id, $blogDTO);
             return response()->json(['message' => 'Blog updated successfully'], 200);
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
@@ -116,7 +116,7 @@ class BlogController extends Controller
             $this->blogService->delete($id);
             return response()->json(['message' => 'Blog deleted successfully'], 200);
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
@@ -126,7 +126,7 @@ class BlogController extends Controller
             $blog = $this->blogService->getById($id);
             return view('Admin.Pages.Blog.show', compact('blog'));
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
@@ -150,7 +150,7 @@ class BlogController extends Controller
                 ]);
 
             } catch (\Exception $e) {
-                throw new \Exception($e->getMessage());
+                return response()->json(['message' => $e->getMessage()], 500);
             }
         }
     }

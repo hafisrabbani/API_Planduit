@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DictionaryController;
 use App\Http\Controllers\Admin\RatingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\InfoProductController;
@@ -22,6 +23,7 @@ Route::group(['prefix' => 'admin/panel/v1/planduit', 'as' => 'admin.v1.', 'middl
     Route::resource('blog-category', BlogCategoryController::class);
     Route::post('ckeditor-upload', [BlogController::class, 'ckeditorUpload'])->name('ckeditor.upload');
     Route::get('rating', [RatingController::class, 'index'])->name('rating');
+    Route::resource('dictionary', DictionaryController::class)->names('dictionary');
 });
 
 Route::prefix('test')->group(function () {
