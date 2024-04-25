@@ -6,6 +6,7 @@ use App\Http\Controllers\Test\TestingController;
 use App\Http\Controllers\Calculator\FinancialCalculatorController;
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\RatingController;
+use App\Http\Controllers\API\DictionaryController;
 
 Route::group(['prefix' => 'test'], function () {
     Route::get('gold-price', [TestingController::class, 'index']);
@@ -36,6 +37,11 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'blog'], function () {
         Route::get('all', [BlogController::class, 'getAll']);
         Route::get('detail/{id}', [BlogController::class, 'getDetail']);
+    });
+
+    Route::group(['prefix' => 'dictionary'],function (){
+        Route::get('/', [DictionaryController::class, 'index']);
+        Route::get('/{id}', [DictionaryController::class, 'detail']);
     });
 
     Route::group(['prefix' => 'common'], function () {
