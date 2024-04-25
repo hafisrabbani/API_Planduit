@@ -3,20 +3,21 @@
 namespace App\Services\Dictionary;
 
 use App\DTO\Admin\DictionaryDTO;
-use LaravelEasyRepository\Service;
 use App\Repositories\Dictionary\DictionaryRepository;
+use LaravelEasyRepository\Service;
 
-class DictionaryServiceImplement extends Service implements DictionaryService{
+class DictionaryServiceImplement extends Service implements DictionaryService
+{
 
-     /**
+    /**
      * don't change $this->mainRepository variable name
      * because used in extends service class
      */
-     protected $mainRepository;
+    protected $mainRepository;
 
     public function __construct(DictionaryRepository $mainRepository)
     {
-      $this->mainRepository = $mainRepository;
+        $this->mainRepository = $mainRepository;
     }
 
     public function createDictionary(DictionaryDTO $data)
@@ -39,18 +40,13 @@ class DictionaryServiceImplement extends Service implements DictionaryService{
         return $this->mainRepository->getDictionary($id, $columns);
     }
 
-    public function getAllDictionary($columns = ['*'])
+    public function getAllDictionary($columns = ['*'], $search = null, $group = 'A')
     {
-        return $this->mainRepository->getAllDictionary($columns);
+        return $this->mainRepository->getAllDictionary($columns, $search, $group);
     }
 
-    public function getGroupDictionary($category, $columns = ['*'])
+    public function getGroupDictionary($columns = ['*'], $search = null, $group = 'A')
     {
-        return $this->mainRepository->getGroupDictionary($category, $columns);
-    }
-
-    public function searchDictionary($search, $columns = ['*'])
-    {
-        return $this->mainRepository->searchDictionary($search, $columns);
+        return $this->mainRepository->getGroupDictionary($columns, $search, $group);
     }
 }

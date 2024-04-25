@@ -22,7 +22,7 @@
                     @csrf
                     <div class="mb-3">
                         <x-input-field type="text" name="title" label="Title"/>
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="description">Description</label>
                             <textarea class="form-control" id="description" name="description" rows="10"></textarea>
                         </div>

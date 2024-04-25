@@ -10,7 +10,6 @@ interface DictionaryRepository extends Repository{
     public function updateDictionary(DictionaryDTO $data, int $id);
     public function deleteDictionary(int $id);
     public function getDictionary(int $id, $columns = ['*']);
-    public function getAllDictionary($columns = ['*']);
-    public function getGroupDictionary($category, $columns = ['*']);
-    public function searchDictionary ($search, $columns = ['*']);
+    public function getAllDictionary($columns = ['*'], $search = null);
+    public function getGroupDictionary($columns = ['*'],$search = null, $group = 'A');
 }

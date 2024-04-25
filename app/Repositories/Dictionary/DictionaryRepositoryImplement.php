@@ -3,16 +3,17 @@
 namespace App\Repositories\Dictionary;
 
 use App\DTO\Admin\DictionaryDTO;
-use LaravelEasyRepository\Implementations\Eloquent;
 use App\Models\Dictionary;
+use LaravelEasyRepository\Implementations\Eloquent;
 
-class DictionaryRepositoryImplement extends Eloquent implements DictionaryRepository{
+class DictionaryRepositoryImplement extends Eloquent implements DictionaryRepository
+{
 
     /**
-    * Model class to be used in this repository for the common methods inside Eloquent
-    * Don't remove or change $this->model variable name
-    * @property Model|mixed $model;
-    */
+     * Model class to be used in this repository for the common methods inside Eloquent
+     * Don't remove or change $this->model variable name
+     * @property Model|mixed $model;
+     */
     protected $model;
 
     public function __construct(Dictionary $model)
@@ -65,28 +66,24 @@ class DictionaryRepositoryImplement extends Eloquent implements DictionaryReposi
         }
     }
 
-    public function getAllDictionary($columns = ['*'])
+    public function getAllDictionary($columns = ['*'], $search = null, $group = 'A')
     {
         try {
-            return Dictionary::select($columns)->get();
+            return Dictionary::select($columns)->orderBy('title', 'asc')->when($search,function ($query) use ($search) {
+                return $query->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
+            })->where('title', 'like', $group . '%')->get();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
     }
 
-    public function getGroupDictionary($category, $columns = ['*'])
+    public function getGroupDictionary($columns = ['*'],$search = null, $group = 'A')
     {
         try {
-            return Dictionary::where('title', 'like', $category.'%')->get($columns);
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
-        }
-    }
-
-    public function searchDictionary($search, $columns = ['*'])
-    {
-        try {
-            return Dictionary::where('title', 'like', '%'.$search.'%')->get($columns);
+            if($search !== null) {
+                return Dictionary::select($columns)->orderBy('title', 'asc')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
+            }
+            return Dictionary::select($columns)->where('title', 'like', $group . '%')->orderBy('title', 'asc')->get();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
