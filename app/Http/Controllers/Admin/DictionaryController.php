@@ -18,8 +18,14 @@ class DictionaryController extends Controller
 
     public function index()
     {
-        $dictionaries = $this->dictionaryService->getAllDictionary();
-        return view('Admin.Pages.Dictionary.index', compact('dictionaries'));
+        $search = request()->query('search');
+        $limit = request()->query('limit') ?? 10;
+        if (!in_array($limit, [10, 20, 50, 100])) {
+            $limit = 10;
+        }
+        $dictionaries = $this->dictionaryService->getAllDictionary(search: $search, limit: $limit);
+        $limitList = [10, 20, 50, 100];
+        return view('Admin.Pages.Dictionary.index', compact('dictionaries', 'limitList'));
     }
 
     public function create()

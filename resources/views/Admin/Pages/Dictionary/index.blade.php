@@ -22,6 +22,32 @@
                             class="bi bi-plus"></i> Dictionary</a>
                 </div>
                 <div class="table-responsive mt-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-2">
+                            <select id="limit-data" class="form-select">
+                                @foreach($limitList as $limit)
+                                    <option value="{{ $limit }}"
+                                            @if(request()->get('limit') == $limit) selected @endif>{{ $limit }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <form action="{{ route('admin.v1.dictionary.index') }}" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search" placeholder="Search..."
+                                       value="{{ request()->get('search') }}">
+                                @if(request()->get('search'))
+                                    <button class="btn btn-danger" type="button"
+                                            onclick="window.location.href='{{ route('admin.v1.dictionary.index') }}'">
+                                        <i class="bi bi-x"></i>
+                                    </button>
+                                @else
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                @endif
+                            </div>
+                        </form>
+                    </div>
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
@@ -49,6 +75,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center">
+                        {{ $dictionaries->links() }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,6 +125,10 @@
                 }
             });
         }
+
+        $('#limit-data').on('change', function () {
+            window.location.href = "{{ route('admin.v1.dictionary.index') }}?limit=" + $(this).val();
+        });
     </script>
 @endpush
 
