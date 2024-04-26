@@ -40,9 +40,9 @@ class DictionaryServiceImplement extends Service implements DictionaryService
         return $this->mainRepository->getDictionary($id, $columns);
     }
 
-    public function getAllDictionary($columns = ['*'], $search = null)
+    public function getAllDictionary($columns = ['*'], $search = null, $limit = 10)
     {
-        return $this->mainRepository->getAllDictionary($columns, $search);
+        return $this->mainRepository->getAllDictionary($columns, $search, $limit);
     }
 
     public function getGroupDictionary($columns = ['*'], $search = null, $group = 'A')
