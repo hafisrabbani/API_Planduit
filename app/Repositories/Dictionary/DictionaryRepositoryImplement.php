@@ -66,12 +66,12 @@ class DictionaryRepositoryImplement extends Eloquent implements DictionaryReposi
         }
     }
 
-    public function getAllDictionary($columns = ['*'], $search = null, $group = 'A')
+    public function getAllDictionary($columns = ['*'], $search = null)
     {
         try {
             return Dictionary::select($columns)->orderBy('title', 'asc')->when($search,function ($query) use ($search) {
                 return $query->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
-            })->where('title', 'like', $group . '%')->get();
+            })->get();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
