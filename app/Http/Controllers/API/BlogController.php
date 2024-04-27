@@ -40,7 +40,7 @@ class BlogController extends Controller
                 unset($blog->description);
                 return $blog;
             });
-            return response()->json(['data' => $blogs], 200);
+            return response()->json(['message' => 'Success','data' => $blogs], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
@@ -54,7 +54,7 @@ class BlogController extends Controller
             $blog->category_name = $blog->category->title;
             unset($blog->category);
             unset($blog->blog_category_id);
-            return response()->json(['data' => $blog], 200);
+            return response()->json(['message' => 'Success','data' => $blog], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
