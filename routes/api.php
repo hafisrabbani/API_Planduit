@@ -37,6 +37,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'blog'], function () {
         Route::get('all', [BlogController::class, 'getAll']);
         Route::get('detail/{id}', [BlogController::class, 'getDetail']);
+        Route::get('category', [BlogController::class, 'getAllCategory']);
     });
 
     Route::group(['prefix' => 'dictionary'],function (){
