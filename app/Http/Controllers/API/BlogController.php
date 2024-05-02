@@ -39,9 +39,9 @@ class BlogController extends Controller
                 $blog->thumbnail = $this->fileHandlerService->getFile($blog->thumbnail);
                 $blog->short_description = substr(strip_tags($blog->description), 0, 100);
                 $blog->category_name = $blog->category->title;
-                (int)$blog->category_id = $blog->blog_category_id;
+//                (int)$blog->category_id = $blog->blog_category_id;
                 unset($blog->category);
-//                unset($blog->blog_category_id);
+                unset($blog->blog_category_id);
                 unset($blog->description);
                 return $blog;
             });
