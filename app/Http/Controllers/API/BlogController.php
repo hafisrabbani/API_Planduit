@@ -55,6 +55,9 @@ class BlogController extends Controller
     {
         try {
             $blog = $this->blogService->getBySlug($id);
+            if(!$blog){
+                return response()->json(['message' => 'Data not found', 'data' => null], 404);
+            }
             $blog->thumbnail = $this->fileHandlerService->getFile($blog->thumbnail);
             $blog->category_name = $blog->category->title;
             unset($blog->category);

@@ -60,7 +60,7 @@ class DictionaryRepositoryImplement extends Eloquent implements DictionaryReposi
     public function getDictionary(int $id, $columns = ['*'])
     {
         try {
-            return Dictionary::findOrfail($id, $columns);
+            return Dictionary::select($columns)->where('id', $id)->first();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
@@ -72,7 +72,6 @@ class DictionaryRepositoryImplement extends Eloquent implements DictionaryReposi
             return Dictionary::select($columns)->orderBy('title', 'asc')->when($search,function ($query) use ($search) {
                 return $query->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
             })->paginate($limit);
-            dd($limit);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
