@@ -37,7 +37,11 @@ class DictionaryController extends Controller
 
     public function detail($id){
         try {
-            $dictionary = $this->dictionaryService->getDictionary($id);
+            $dictionary = $this->dictionaryService->getDictionary($id, [
+                'id',
+                'title',
+                'description',
+            ]);
             return response()->json([
                 'message' => 'success',
                 'data' => $dictionary
