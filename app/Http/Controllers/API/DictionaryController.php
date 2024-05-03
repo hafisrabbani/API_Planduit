@@ -25,7 +25,7 @@ class DictionaryController extends Controller
             ]);
             $query = request()->query('search');
             $group = request()->query('group');
-            $dictionaries = $this->dictionaryService->getAllDictionary(['id','title'],$query, $group);
+            $dictionaries = $this->dictionaryService->getGroupDictionary(['id','title'],$query, $group);
             return response()->json([
                 'message' => 'success',
                 'data' => $dictionaries
