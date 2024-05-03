@@ -42,6 +42,9 @@ class DictionaryController extends Controller
                 'title',
                 'description',
             ]);
+            if (!$dictionary) {
+                return response()->json(['message' => 'Data not found', 'data' => null], 404);
+            }
             return response()->json([
                 'message' => 'success',
                 'data' => $dictionary
