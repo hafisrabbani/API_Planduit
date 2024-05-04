@@ -26,6 +26,7 @@
                             <th>No</th>
                             <th>Title</th>
                             <th>Status</th>
+                            <th>Thumbnail</th>
                             <th>Category</th>
                             <th>Action</th>
                         </tr>
@@ -37,6 +38,10 @@
                                 <td>{{ $blog->title }}</td>
                                 <td>
                                     <span class="badge bg-{{ $blog->status == 'published' ? 'success' : 'danger' }}">{{ $blog->status }}</span>
+                                </td>
+                                <td>
+                                    <img src="{{ $blog->thumbnail }}" alt="{{ $blog->title }}"
+                                         class="img-fluid" style="width: 100px; height: 100px; object-fit: cover;">
                                 </td>
                                 <td>{{ $blog->category->title }}</td>
                                 <td>

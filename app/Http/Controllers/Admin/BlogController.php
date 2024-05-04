@@ -28,6 +28,10 @@ class BlogController extends Controller
     {
         try {
             $blogs = $this->blogService->getAll();
+            collect($blogs)->map(function ($blog) {
+                $blog->thumbnail = $this->fileHandlerService->getFile($blog->thumbnail);
+                return $blog;
+            });
             return view('Admin.Pages.Blog.index', compact('blogs'));
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
