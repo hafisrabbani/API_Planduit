@@ -1,158 +1,156 @@
-{
-    "questions": [
-        {
-            "number": 1,
-            "question": "Berapa jangka waktu yang Anda maksudkan untuk melakukan investasi?",
-            "choices": [
-                {
-                    "label": "Kurang dari 1 tahun",
-                    "value": 0
-                },
-                {
-                    "label": "1-3 tahun",
-                    "value": 1
-                },
-                {
-                    "label": "3-5 tahun",
-                    "value": 2
-                },
-                {
-                    "label": "Lebih dari 5 tahun",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "number": 2,
-            "question": "Berapa jumlah Dana Darurat (Emergency Fund) yang telah Anda kumpulkan hingga saat ini?",
-            "choices": [
-                {
-                    "label": "Lebih dari 6 bulan gaji",
-                    "value": 0
-                },
-                {
-                    "label": "3-6 bulan gaji",
-                    "value": 1
-                },
-                {
-                    "label": "1-3 bulan gaji",
-                    "value": 2
-                },
-                {
-                    "label": "Kurang dari 1 bulan gaji",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "number": 3,
-            "question": "Seberapa besar toleransi risiko yang Anda sanggupi dalam melakukan investasi?",
-            "choices": [
-                {
-                    "label": "Tidak mengambil risiko atas modal pokok",
-                    "value": 0
-                },
-                {
-                    "label": "Sedikit mengambil risiko, dengan tetap melindungi nilai modal dari penurunan",
-                    "value": 1
-                },
-                {
-                    "label": "Berani mengambil risiko untuk investasi jangka panjang demi hasil yang lebih tinggi",
-                    "value": 2
-                },
-                {
-                    "label": "Sangat berani mengambil risiko untuk investasi jangka panjang demi hasil yang maksimal",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "number": 4,
-            "question": "Pilihlah salah satu skenario investasi yang paling sesuai dengan preferensi Anda!",
-            "choices": [
-                {
-                    "label": "Maksimal keuntungan 33% dan kerugian 12%",
-                    "value": 0
-                },
-                {
-                    "label": "Maksimal keuntungan 42% dan kerugian 15%",
-                    "value": 1
-                },
-                {
-                    "label": "Maksimal keuntungan 60% dan kerugian 30%",
-                    "value": 2
-                },
-                {
-                    "label": "Maksimal keuntungan 80% dan kerugian 50%",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "number": 5,
-            "question": "Apakah komposisi portofolio investasi yang Anda miliki saat ini?",
-            "choices": [
-                {
-                    "label": "Terdiri dari kas atau setara kas (tabungan dan deposito berjangka)",
-                    "value": 0
-                },
-                {
-                    "label": "Sebagian besar berinvestasi dalam kas, dengan beberapa investasi lainnya (misalnya properti selain rumah tinggal, saham unggulan)",
-                    "value": 1
-                },
-                {
-                    "label": "Beragam investasi, dengan sebagian besar tidak berada dalam bentuk kas (misalnya saham, obligasi, reksadana, properti selain rumah tinggal)",
-                    "value": 2
-                },
-                {
-                    "label": "Campuran investasi termasuk investasi berisiko tinggi (misalnya opsi, reksadana berisiko tinggi, valuta asing, saham perusahaan kecil)",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "number": 6,
-            "question": "Berapa persentase dari total investasi Anda saat ini yang diinvestasikan dalam reksadana?",
-            "choices": [
-                {
-                    "label": "0-10%",
-                    "value": 0
-                },
-                {
-                    "label": "11-15%",
-                    "value": 1
-                },
-                {
-                    "label": "26-40%",
-                    "value": 2
-                },
-                {
-                    "label": "Lebih dari 40%",
-                    "value": 3
-                }
-            ]
-        },
-        {
-            "number": 7,
-            "question": "Apabila salah satu investasi Anda mengalami kerugian sebesar 25% dari nilai pokoknya, tindakan apa yang akan Anda ambil?",
-            "choices": [
-                {
-                    "label": "Mengambil langkah untuk menjual segera demi mencegah kerugian lebih lanjut ('cut loss')",
-                    "value": 0
-                },
-                {
-                    "label": "Menahan investasi tersebut sementara dan menjualnya saat harganya kembali naik untuk kembali mencapai titik impas ('break even')",
-                    "value": 1
-                },
-                {
-                    "label": "Mempertahankan investasi tersebut untuk jangka panjang",
-                    "value": 2
-                },
-                {
-                    "label": "Memanfaatkan kesempatan untuk membeli lebih banyak lagi, mengingat harga saham yang sedang murah",
-                    "value": 3
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "number": 1,
+        "question": "Berapa jangka waktu yang Anda maksudkan untuk melakukan investasi?",
+        "choices": [
+            {
+                "label": "Kurang dari 1 tahun",
+                "value": 0
+            },
+            {
+                "label": "1-3 tahun",
+                "value": 1
+            },
+            {
+                "label": "3-5 tahun",
+                "value": 2
+            },
+            {
+                "label": "Lebih dari 5 tahun",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 2,
+        "question": "Berapa jumlah Dana Darurat (Emergency Fund) yang telah Anda kumpulkan hingga saat ini?",
+        "choices": [
+            {
+                "label": "Lebih dari 6 bulan gaji",
+                "value": 0
+            },
+            {
+                "label": "3-6 bulan gaji",
+                "value": 1
+            },
+            {
+                "label": "1-3 bulan gaji",
+                "value": 2
+            },
+            {
+                "label": "Kurang dari 1 bulan gaji",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 3,
+        "question": "Seberapa besar toleransi risiko yang Anda sanggupi dalam melakukan investasi?",
+        "choices": [
+            {
+                "label": "Tidak mengambil risiko atas modal pokok",
+                "value": 0
+            },
+            {
+                "label": "Sedikit mengambil risiko, dengan tetap melindungi nilai modal dari penurunan",
+                "value": 1
+            },
+            {
+                "label": "Berani mengambil risiko untuk investasi jangka panjang demi hasil yang lebih tinggi",
+                "value": 2
+            },
+            {
+                "label": "Sangat berani mengambil risiko untuk investasi jangka panjang demi hasil yang maksimal",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 4,
+        "question": "Pilihlah salah satu skenario investasi yang paling sesuai dengan preferensi Anda!",
+        "choices": [
+            {
+                "label": "Maksimal keuntungan 33% dan kerugian 12%",
+                "value": 0
+            },
+            {
+                "label": "Maksimal keuntungan 42% dan kerugian 15%",
+                "value": 1
+            },
+            {
+                "label": "Maksimal keuntungan 60% dan kerugian 30%",
+                "value": 2
+            },
+            {
+                "label": "Maksimal keuntungan 80% dan kerugian 50%",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 5,
+        "question": "Apakah komposisi portofolio investasi yang Anda miliki saat ini?",
+        "choices": [
+            {
+                "label": "Terdiri dari kas atau setara kas (tabungan dan deposito berjangka)",
+                "value": 0
+            },
+            {
+                "label": "Sebagian besar berinvestasi dalam kas, dengan beberapa investasi lainnya (misalnya properti selain rumah tinggal, saham unggulan)",
+                "value": 1
+            },
+            {
+                "label": "Beragam investasi, dengan sebagian besar tidak berada dalam bentuk kas (misalnya saham, obligasi, reksadana, properti selain rumah tinggal)",
+                "value": 2
+            },
+            {
+                "label": "Campuran investasi termasuk investasi berisiko tinggi (misalnya opsi, reksadana berisiko tinggi, valuta asing, saham perusahaan kecil)",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 6,
+        "question": "Berapa persentase dari total investasi Anda saat ini yang diinvestasikan dalam reksadana?",
+        "choices": [
+            {
+                "label": "0-10%",
+                "value": 0
+            },
+            {
+                "label": "11-15%",
+                "value": 1
+            },
+            {
+                "label": "26-40%",
+                "value": 2
+            },
+            {
+                "label": "Lebih dari 40%",
+                "value": 3
+            }
+        ]
+    },
+    {
+        "number": 7,
+        "question": "Apabila salah satu investasi Anda mengalami kerugian sebesar 25% dari nilai pokoknya, tindakan apa yang akan Anda ambil?",
+        "choices": [
+            {
+                "label": "Mengambil langkah untuk menjual segera demi mencegah kerugian lebih lanjut ('cut loss')",
+                "value": 0
+            },
+            {
+                "label": "Menahan investasi tersebut sementara dan menjualnya saat harganya kembali naik untuk kembali mencapai titik impas ('break even')",
+                "value": 1
+            },
+            {
+                "label": "Mempertahankan investasi tersebut untuk jangka panjang",
+                "value": 2
+            },
+            {
+                "label": "Memanfaatkan kesempatan untuk membeli lebih banyak lagi, mengingat harga saham yang sedang murah",
+                "value": 3
+            }
+        ]
+    }
+]
