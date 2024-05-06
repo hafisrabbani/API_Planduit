@@ -20,7 +20,7 @@ class DictionaryController extends Controller
     {
         try {
             request()->validate([
-                'search' => 'string',
+                'search' => 'string|nullable',
                 'group' => 'string|required'
             ]);
             $query = request()->query('search');
