@@ -66,10 +66,10 @@ class DictionaryRepositoryImplement extends Eloquent implements DictionaryReposi
         }
     }
 
-    public function getAllDictionary($columns = ['*'], $search = null,$limit = 10)
+    public function getAllDictionary($columns = ['*'], $search = null, $limit = 10)
     {
         try {
-            return Dictionary::select($columns)->orderBy('title', 'asc')->when($search,function ($query) use ($search) {
+            return Dictionary::select($columns)->orderBy('title', 'asc')->when($search, function ($query) use ($search) {
                 return $query->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
             })->paginate($limit);
         } catch (\Exception $e) {
@@ -77,13 +77,26 @@ class DictionaryRepositoryImplement extends Eloquent implements DictionaryReposi
         }
     }
 
-    public function getGroupDictionary($columns = ['*'],$search = null, $group = 'A')
+    public function getGroupDictionary($columns = ['*'], $search = null, $group = 'A')
     {
         try {
-            if($search !== null) {
+            if ($search !== null) {
                 return Dictionary::select($columns)->orderBy('title', 'asc')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
             }
             return Dictionary::select($columns)->where('title', 'like', $group . '%')->orderBy('title', 'asc')->get();
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+    }
+
+    public function getRandomDictionary($total = 1)
+    {
+        try {
+            $arrRandom = [];
+            for ($i = 0; $i < $total; $i++) {
+                $arrRandom[] = rand(1, Dictionary::count());
+            }
+            return Dictionary::whereIn('id', $arrRandom)->select(['id', 'title'])->get();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }

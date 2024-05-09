@@ -49,4 +49,9 @@ class DictionaryServiceImplement extends Service implements DictionaryService
     {
         return $this->mainRepository->getGroupDictionary($columns, $search, $group);
     }
+
+    public function getRandomDictionary($total = 1)
+    {
+        return $this->mainRepository->getRandomDictionary($total);
+    }
 }

@@ -18,4 +18,6 @@ interface DictionaryRepository extends Repository
     public function getAllDictionary($columns = ['*'], $search = null, $limit = 10);
 
     public function getGroupDictionary($columns = ['*'], $search = null, $group = 'A');
+
+    public function getRandomDictionary($total = 1);
 }

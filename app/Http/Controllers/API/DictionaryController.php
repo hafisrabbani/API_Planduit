@@ -53,4 +53,25 @@ class DictionaryController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+
+
+    public function getRandomDictionary(){
+        try {
+            $total = request()->query('total');
+            request()->validate([
+                'total' => 'integer|nullable'
+            ]);
+            $dictionary = $this->dictionaryService->getRandomDictionary($total);
+            if (!$dictionary) {
+                return response()->json(['message' => 'Data not found', 'data' => null], 404);
+            }
+            return response()->json([
+                'message' => 'success',
+                'data' => $dictionary
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
 }
