@@ -12,4 +12,5 @@ interface DictionaryService extends BaseService{
     public function getDictionary(int $id, $columns = ['*']);
     public function getAllDictionary($columns = ['*'], $search = null, $limit = 10);
     public function getGroupDictionary($columns = ['*'],$search = null, $group = 'A');
+    public function getRandomDictionary($total = 1);
 }

@@ -42,6 +42,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::group(['prefix' => 'dictionary'],function (){
         Route::get('/', [DictionaryController::class, 'index']);
+        Route::get('/random', [DictionaryController::class, 'getRandomDictionary']);
         Route::get('/{id}', [DictionaryController::class, 'detail']);
     });
 
