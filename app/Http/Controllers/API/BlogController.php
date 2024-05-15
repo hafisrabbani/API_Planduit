@@ -24,7 +24,7 @@ class BlogController extends Controller
     {
         try {
             $search = request()->get('search') ?? null;
-            $limit = request()->get('limit') ?? 10;
+            $limit = request()->get('limit') ?? 15;
             $category = request()->get('category') ?? null;
             $blogs = $this->blogService->getAll(columns:[
                 'id',
